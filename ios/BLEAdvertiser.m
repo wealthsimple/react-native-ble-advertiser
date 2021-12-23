@@ -123,10 +123,10 @@ RCT_EXPORT_METHOD(isActive:
 }
 
 -(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary<NSString *,id> *)advertisementData RSSI:(NSNumber *)RSSI {
-    RCTLogInfo(@"Found Name: %@", [peripheral name]);
-    RCTLogInfo(@"Found Services: %@", [peripheral services]);
-    RCTLogInfo(@"Found Id : %@", [peripheral identifier]);
-    RCTLogInfo(@"Found UUID String : %@", [[peripheral identifier] UUIDString]);
+    // RCTLogInfo(@"Found Name: %@", [peripheral name]);
+    // RCTLogInfo(@"Found Services: %@", [peripheral services]);
+    // RCTLogInfo(@"Found Id : %@", [peripheral identifier]);
+    // RCTLogInfo(@"Found UUID String : %@", [[peripheral identifier] UUIDString]);
 
     NSArray *keys = [advertisementData allKeys];
     for (int i = 0; i < [keys count]; ++i) {
@@ -134,16 +134,16 @@ RCT_EXPORT_METHOD(isActive:
         NSString *keyName = (NSString *) key;
         NSObject *value = [advertisementData objectForKey: key];
         if ([value isKindOfClass: [NSArray class]]) {
-            printf("   key: %s\n", [keyName cStringUsingEncoding: NSUTF8StringEncoding]);
+            // printf("   key: %s\n", [keyName cStringUsingEncoding: NSUTF8StringEncoding]);
             NSArray *values = (NSArray *) value;
             for (int j = 0; j < [values count]; ++j) {
                 NSObject *aValue = [values objectAtIndex: j];
-                printf("       %s\n", [[aValue description] cStringUsingEncoding: NSUTF8StringEncoding]);
-                printf("       is NSData: %d\n", [aValue isKindOfClass: [NSData class]]);
+                // printf("       %s\n", [[aValue description] cStringUsingEncoding: NSUTF8StringEncoding]);
+                // printf("       is NSData: %d\n", [aValue isKindOfClass: [NSData class]]);
             }
         } else {
             const char *valueString = [[value description] cStringUsingEncoding: NSUTF8StringEncoding];
-            printf("   key: %s, value: %s\n", [keyName cStringUsingEncoding: NSUTF8StringEncoding], valueString);
+            // printf("   key: %s, value: %s\n", [keyName cStringUsingEncoding: NSUTF8StringEncoding], valueString);
         }
     }
 
